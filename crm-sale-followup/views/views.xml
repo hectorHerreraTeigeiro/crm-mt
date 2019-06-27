@@ -1,59 +1,68 @@
-<odoo>
-  <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="crm-sale-followup.list">
-      <field name="name">crm-sale-followup list</field>
-      <field name="model">crm-sale-followup.crm-sale-followup</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
-
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="crm-sale-followup.action_window">
-      <field name="name">crm-sale-followup window</field>
-      <field name="res_model">crm-sale-followup.crm-sale-followup</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
-
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="crm-sale-followup.action_server">
-      <field name="name">crm-sale-followup server</field>
-      <field name="model_id" ref="model_crm-sale-followup_crm-sale-followup"/>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
-
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="crm-sale-followup" id="crm-sale-followup.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="crm-sale-followup.menu_1" parent="crm-sale-followup.menu_root"/>
-    <menuitem name="Menu 2" id="crm-sale-followup.menu_2" parent="crm-sale-followup.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="crm-sale-followup.menu_1_list" parent="crm-sale-followup.menu_1"
-              action="crm-sale-followup.action_window"/>
-    <menuitem name="Server to list" id="crm-sale-followup" parent="crm-sale-followup.menu_2"
-              action="crm-sale-followup.action_server"/>
-    -->
-  </data>
+<?xml version="1.0" encoding="UTF-8"?>
+ <odoo>
+    <data>
+        <!-- Add CRM sale followup fields to existing view -->
+        <record model="ir.ui.view" id="crm_sale_followup_form_view">
+            <field name="name">crm.lead.form.sale-followup</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Seguimiento">
+                        <group>
+                        <group string="Prospectacion 1%">
+                            <field name="prosp_basedatos"/>
+                            <field name="prosp_evento"/>
+                            <field name="prosp_ae_id" domain="[('parent_id', '=', 1)]"/>
+                            <field name="prosp_cteref_id"/>
+                            <field name="prosp_callctr"/>
+                            <field name="prosp_otro"/>
+                            <field name="prosp_comment"/>
+                        </group>
+                        <group string="Calificacion 10%">
+                            <field name="calif_tienepry"/>
+                            <field name="calif_tieneppto"/>
+                            <field name="calif_plazo" widget="integer"/>
+                            <field name="calif_compralocal"/>
+                            <field name="calif_decidelocal"/>
+                            <field name="calif_primerprov"/>
+                            <field name="calif_regfabricante"/>
+                            <field name="calif_comment"/>
+                        </group>
+                        </group>
+                        <group>
+                        <group string="Investigacion 30%">
+                            <field name="inv_radiografia"/>
+                            <field name="inv_equipotrabajo"/>
+                            <field name="inv_alcance"/>
+                            <field name="inv_ingenieria"/>
+                            <field name="inv_competencia"/>
+                            <field name="inv_apoyofabric"/>
+                            <field name="inv_mapacontactos"/>
+                            <field name="inv_comment"/>
+                        </group>
+                        <group string="Presentacion 60%">
+                            <field name="pres_margenutil" widget="integer"/>
+                            <field name="pres_descfabric"/>
+                            <field name="pres_revising"/>
+                            <field name="pres_vobointerno"/>
+                            <field name="pres_contactoenvio_id"/>
+                            <field name="pres_fechalimprop"/>
+                            <field name="pres_recepconfirm"/>
+                            <field name="pres_propganadora"/>
+                            <field name="pres_comment"/>
+                        </group>
+                        </group>
+                        <group string="Cierre 90%">
+                            <field name="cie_revpropclte"/>
+                            <field name="cie_manejoobjec"/>
+                            <field name="cie_cierreverbal" widget="date"/>
+                            <field name="cie_conffecharecepPO"/>
+                            <field name="cie_comment"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
 </odoo>
