@@ -52,7 +52,7 @@ class CrmLead(models.Model):
     inv_comment = fields.Char(string="Comentarios", required=False, )
     pres_margenutil = fields.Integer(string="Margen utilidad", required=False,
                                    help="Estimate of the date on which the opportunity will be won.", )
-    pres_descfabric = fields.Boolean(string="Descuentos fabricante", required=False,
+    pres_descfabric = fields.Boolean(string="Desc fabricante aplicados", required=False,
                                    help="Estimate of the date on which the opportunity will be won.", )
     pres_revising = fields.Boolean(string="Revision ingenieria", required=False,
                                    help="Estimate of the date on which the opportunity will be won.", )
